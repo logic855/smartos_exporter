@@ -53,7 +53,7 @@ func (e *GZMLAGUsageCollector) Collect(ch chan<- prometheus.Metric) {
 func (e *GZMLAGUsageCollector) nicstat() {
 	// XXX needs enhancement :
 	// use of nicstat will wait 2 seconds in order to collect statistics
-	out, eerr := exec.Command("nicstat", "-i", "aggr0", "1", "2").Output()
+	out, eerr := exec.Command("nicstat", "-i", "rge0", "1", "2").Output()
 	if eerr != nil {
 		log.Errorf("error on executing nicstat: %v", eerr)
 	}
@@ -76,8 +76,8 @@ func (e *GZMLAGUsageCollector) parseNicstatOutput(out string) error {
 		if err != nil {
 			return err
 		}
-		e.gzMLAGUsageRead.With(prometheus.Labels{"device": "aggr0"}).Set(readKb)
-		e.gzMLAGUsageWrite.With(prometheus.Labels{"device": "aggr0"}).Set(writeKb)
+		e.gzMLAGUsageRead.With(prometheus.Labels{"device": "rge0"}).Set(readKb)
+		e.gzMLAGUsageWrite.With(prometheus.Labels{"device": "rge0"}).Set(writeKb)
 	}
 	return nil
 }
