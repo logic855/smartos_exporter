@@ -191,9 +191,11 @@ func (e *ZoneKstatCollector) kstatCPUList() {
 	if eerr != nil {
 		log.Errorf("error on executing kstat: %v", eerr)
 	}
-	perr := e.parseKstatCPUListOutput(string(out))
-	if perr != nil {
-		log.Errorf("error on parsing kstat CPU list: %v", perr)
+	if (out != nil {
+		perr := e.parseKstatCPUListOutput(string(out))
+		if perr != nil {
+			log.Errorf("error on parsing kstat CPU list: %v", perr)
+		}
 	}
 }
 
