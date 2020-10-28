@@ -28,11 +28,11 @@ func NewGZMLAGUsageExporter() (*GZMLAGUsageCollector, error) {
 	return &GZMLAGUsageCollector{
 		gzMLAGUsageRead: prometheus.NewGaugeVec(prometheus.GaugeOpts{
 			Name: "smartos_network_mlag_receive_kilobytes",
-			Help: "MLAG (aggr0) receive statistic in KBytes.",
+			Help: "MLAG (rge0) receive statistic in KBytes.",
 		}, []string{"device"}),
 		gzMLAGUsageWrite: prometheus.NewGaugeVec(prometheus.GaugeOpts{
 			Name: "smartos_network_mlag_transmit_kilobytes",
-			Help: "MLAG (aggr0) transmit statistic in KBytes.",
+			Help: "MLAG (rge0) transmit statistic in KBytes.",
 		}, []string{"device"}),
 	}, nil
 }
